@@ -1,0 +1,117 @@
+# Species Definitions
+# A: autotrophs (Cyanobacteria, A. platensis)
+# H: heterotrophs (specifically Methanotrophs, M. campsulatus or Mm. methanica)
+# C: CO2
+# O: O2
+# M: CH4
+# L: light (counting moles of photons)
+# N: nutrients containing Nitrogen (counting moles of single N atoms)
+# P: nutrients containing Phosphorous (counting moles of single P atoms)
+
+# Half Saturation Concentrations (Monod model)
+half_saturation_concentrations:
+  A: # consumption by autotrophs
+    C: 9.08
+    O: null
+    M: null
+    L: 70e-6
+    N: null
+    P: 1.453e-3
+  H: # consumption by heterotrophs
+    C: null
+    O: 91.0
+    M: 14.0
+    L: null
+    N: null
+    P: null
+
+# Inverse Yields
+# (moles of substrate taken to create one mole C of biomass)
+inverse_yields:
+  A: # autotrophs
+    C: 1.0
+    O: 0.0
+    M: 0.0
+    L: 0.0
+    N: 0.108333
+    P: 0.01
+  H: # heterotrophs
+    C: 0.0
+    O: 2.769230769230769
+    M: 1.923076923076923
+    L: 0.0
+    N: 0.108333
+    P: 0.01
+
+# Maximum Growth Rates
+mu_max:
+  A: 1.536884446750269e-06
+  H: 1.2033805218054606e-05
+
+# Bacterial Doubling Times
+# for each species, given as pairs of (doubling time in hours, literature reference)
+doubling_times:
+  A_platensis: 
+    - [ 125.28, "?" ]
+  M_capsulatus:
+    - [ 16.0, "?" ]
+  M_methanica:
+    - [ null, null ]
+
+# Gas Production Coefficients
+#   alpha: growth-associated gas production 
+#   (moles of gas produced per mole C of biomass created)
+gas_prod_coeff_growth_assoc:
+  # production by autotrophs
+  A: 
+    C: 0.0
+    O: 1.0
+    M: 0.0
+    L: 0.0
+    N: 0.0
+    P: 0.0
+  # production by heterotrophs
+  H: 
+    C: 0.923076923076923
+    O: 0.0
+    M: 0.0
+    L: 0.0
+    N: 0.0
+    P: 0.0
+#   beta: non-growth-associated gas production
+#   (moles of gas produced per mole of biomass present)
+gas_prod_coeff_non_growth_assoc:
+  # production by autotrophs
+  A: 
+    C: 0.0
+    O: 5.555555e-6
+    M: 0.0
+    L: 0.0
+    N: 0.0
+    P: 0.0
+  # production by heterotrophs
+  H: 
+    C: 6.3333333e-6
+    O: 0.0
+    M: 0.0
+    L: 0.0
+    N: 0.0
+    P: 0.0
+
+# Gas Exchange Parameters
+#   k_La: gas transfer coefficient
+k_La:
+    C: 1e-6
+    O: 1e-6
+    M: 1e-6
+    L: null
+    N: null
+    P: null
+#   cH: Henry constants
+cH: 
+    C: 0.000335546
+    O: 1.2829699999999998e-05
+    M: 1.1842799999999998e-05
+    L: null
+    N: null
+    P: null

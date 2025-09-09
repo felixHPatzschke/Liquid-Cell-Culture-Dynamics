@@ -1,0 +1,9 @@
+# files generated for previews
+*.js
+*.css
+*.html
+*.woff
+
+# OS-specific files
+.DS_Store
+Thumbs.db

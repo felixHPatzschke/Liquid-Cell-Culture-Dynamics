@@ -1,0 +1,3 @@
+# gas supply partial pressures
+methane_percentage_in_supply: 3.0
+gas_supply_pressure_hpa: 1013.25
