@@ -1,3 +1,10 @@
 # gas supply partial pressures
-methane_percentage_in_supply: 3.0
-gas_supply_pressure_hpa: 1013.25
+methane_ratio_in_supply: 0.0001 # unitless
+gas_supply_pressure_hpa: 1013.25 # units of hPa
+
+total_volume_litres: 1.0 # litres
+surface_area_sqcm: 1.0 # cm^2
+
+stirring_time_scale_seconds: 1.0 
+
+light_intensity: 1000 # units of µmol photons / m^2 / s

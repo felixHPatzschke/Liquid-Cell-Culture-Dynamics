@@ -1,6 +1,4 @@
-# Species Definitions
-# A: autotrophs (Cyanobacteria, A. platensis)
-# H: heterotrophs (specifically Methanotrophs, M. campsulatus or Mm. methanica)
+# Nutrient Species Definitions
 # C: CO2
 # O: O2
 # M: CH4
@@ -9,47 +7,42 @@
 # P: nutrients containing Phosphorous (counting moles of single P atoms)
 
 # Half Saturation Concentrations (Monod model)
+# grouped by microbial species
+# listed substrates are required, i.e. if their concentration should drop to zero, growth stops.
+# however, some substrates may be non-limiting, in which case their half-saturation concentration is set to zero.
+# (or the half-saturation concentration is simply not known, so we ignore the associated Monod factor)
 half_saturation_concentrations:
-  A: # consumption by autotrophs
+  # consumption by
+  A_platensis:
     C: 9.08
-    O: null
-    M: null
-    L: 70e-6
-    N: null
+    L: 70.0e-6
+    N: 0.0
     P: 1.453e-3
-  H: # consumption by heterotrophs
-    C: null
+  # consumption by
+  M_capsulatus:
     O: 91.0
     M: 14.0
-    L: null
-    N: null
-    P: null
+    N: 0.0
+    P: 0.0
 
 # Inverse Yields
 # (moles of substrate taken to create one mole C of biomass)
 inverse_yields:
-  A: # autotrophs
+  # substrate removal by
+  A_platensis:
     C: 1.0
-    O: 0.0
-    M: 0.0
     L: 0.0
     N: 0.108333
     P: 0.01
-  H: # heterotrophs
-    C: 0.0
+  # substrate removal by
+  M_capsulatus:
     O: 2.769230769230769
     M: 1.923076923076923
-    L: 0.0
     N: 0.108333
     P: 0.01
 
-# Maximum Growth Rates
-mu_max:
-  A: 1.536884446750269e-06
-  H: 1.2033805218054606e-05
-
 # Bacterial Doubling Times
-# for each species, given as pairs of (doubling time in hours, literature reference)
+# for each species, given as pairs of (doubling time in hours, literature reference), should allow for multiple literature values
 doubling_times:
   A_platensis: 
     - [ 125.28, "?" ]
@@ -62,56 +55,44 @@ doubling_times:
 #   alpha: growth-associated gas production 
 #   (moles of gas produced per mole C of biomass created)
 gas_prod_coeff_growth_assoc:
-  # production by autotrophs
-  A: 
-    C: 0.0
+  A_platensis: 
     O: 1.0
-    M: 0.0
-    L: 0.0
-    N: 0.0
-    P: 0.0
-  # production by heterotrophs
-  H: 
+  M_capsulatus: 
     C: 0.923076923076923
-    O: 0.0
-    M: 0.0
-    L: 0.0
-    N: 0.0
-    P: 0.0
 #   beta: non-growth-associated gas production
-#   (moles of gas produced per mole of biomass present)
+#   (moles of gas produced per second per mole C of biomass present)
 gas_prod_coeff_non_growth_assoc:
-  # production by autotrophs
-  A: 
-    C: 0.0
+  A_platensis: 
     O: 5.555555e-6
-    M: 0.0
-    L: 0.0
-    N: 0.0
-    P: 0.0
-  # production by heterotrophs
-  H: 
+  M_capsulatus: 
     C: 6.3333333e-6
-    O: 0.0
-    M: 0.0
-    L: 0.0
-    N: 0.0
-    P: 0.0
 
 # Gas Exchange Parameters
-#   k_La: gas transfer coefficient
-k_La:
-    C: 1e-6
-    O: 1e-6
-    M: 1e-6
-    L: null
-    N: null
-    P: null
-#   cH: Henry constants
-cH: 
-    C: 0.000335546
-    O: 1.2829699999999998e-05
-    M: 1.1842799999999998e-05
-    L: null
-    N: null
-    P: null
+henry_law_coeffs:
+  units: "mol/m^3/Pa"
+  O: 
+    - [ 1.283e-5 , "https://doi.org/10.5194/acp-23-10901-2023" ]
+  N: 
+    - [ 6.02e-6 , "https://doi.org/10.5194/acp-23-10901-2023" ]
+  C: 
+    - [ 3.33e-4 , "https://doi.org/10.5194/acp-23-10901-2023" ]
+  M: 
+    - [ 1.39e-5 , "https://doi.org/10.5194/acp-23-10901-2023" ]
+diffusion_coeffs_in_water:
+  units: "m^2/s"
+  O: 
+    - [ 2.0e-9, "Bionumbers, Unisense" ]
+  N: 
+    - [ 2.6e-9, "ACS, Unisense" ]
+  C: 
+    - [ 1.9e-9, "Bionumbers, ACS" ]
+  M: 
+    - [ 1.9e-9, "ScienceDirect, Unisense" ]
+mass_transfer_coeffs:
+  units: 
+standard_atmosphere_composition:
+  # unitless
+  N: 0.7808
+  O: 0.2095
+  C: 0.0004
+
