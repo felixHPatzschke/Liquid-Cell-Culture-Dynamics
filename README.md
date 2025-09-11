@@ -43,25 +43,42 @@ The dynamics of the concentrations are driven by the interactions between the sp
 Each of these interactions is described in more detail below:
 
 ### Bacterial Proliferation and the Multiplicative Monod Model
-The proliferation of each biological species $🦠$ is described by $$\partial_t \, c_🦠 = \mu_🦠 \cdot c_🦠$$ with the growth rate $\mu_🦠$. 
+The proliferation of each biological species $🦠$ is described by 
 
-The growth rate $\mu$ of each biological species depends on the concentrations of the nutrients available to it. In the case of one limiting nutrient, this relationship is often modelled using the Monod equation: $$\mu = \mu_{\mathrm{max}} \cdot \frac{c}{c^\mathrm{half}+c}\ ,$$ where $c$ is the concentration of the limiting nutrient, $\mu_{\mathrm{max}}$ is the maximum growth rate of the biological species, and $c^\mathrm{half}$ is the half-saturation constant, which is specific both to the proliferating biological species and the nutrient considered. In the case of multiple limiting nutrients, we use the **multiplicative Monod model:** $$\mu_{🦠}(c_\cdots) = \mu_{\max,🦠} \cdot \prod_{🧪} \frac{c_{🧪}}{c^\text{half}_{🦠,🧪} + c_{🧪}}$$ 
+$$ \partial_t \, c_🦠 = \mu_🦠 \cdot c_🦠 $$
+
+with the growth rate $\mu_🦠$. 
+
+The growth rate $\mu$ of each biological species depends on the concentrations of the nutrients available to it. In the case of one limiting nutrient, this relationship is often modelled using the Monod equation: $$\mu = \mu_{\mathrm{max}} \cdot \frac{c}{c^\mathrm{half}+c}\ ,$$ where $c$ is the concentration of the limiting nutrient, $\mu_{\mathrm{max}}$ is the maximum growth rate of the biological species, and $c^\mathrm{half}$ is the half-saturation constant, which is specific both to the proliferating biological species and the nutrient considered. In the case of multiple limiting nutrients, we use the **multiplicative Monod model:** 
+
+$$ \mu_{🦠}(c_\cdots) = \mu_{\max,🦠} \cdot \prod_{🧪} \frac{c_{🧪}}{c^\text{half}_{🦠,🧪} + c_{🧪}} $$
 
 ### Nutrient Consumption
 
-The associated consumption rate of each required nutrient species $🧪$ is described by $$\partial_t\,c_🧪 = \bar{Y}_{🦠\leftarrow🧪} \cdot \mu_🦠 \cdot c_🦠$$ with the growth-to-consumption coefficent $\bar{Y}_{🦠\leftarrow🧪}$.
+The associated consumption rate of each required nutrient species $🧪$ is described by 
+
+$$ \partial_t\,c_🧪 = \bar{Y}_{🦠\leftarrow🧪} \cdot \mu_🦠 \cdot c_🦠 $$
+
+with the growth-to-consumption coefficent $\bar{Y}_{🦠\leftarrow🧪}$.
 
 > #### Special Case: Light Absorption
 > to do
 
 ### Gas Production
-Most of the gas is produced by bacteria in the process of proliferation (growth-associated part), but some is also produced independently of ongoing proliferation (non-growth-associated part). For each nutrient species $🧪$: $$\partial_t\,c_🧪 = \underbrace{ ~\alpha_{🦠\to🧪} \cdot \mu_{🦠}(c_\cdots) \cdot c_{🦠}~ }_{ \text{growth-associated} } + \underbrace{ ~\beta_{🦠\to🧪} \cdot c_{🦠}~ }_{ \text{non-growth-associated} }$$ with the growth-associated production coefficent $\alpha_{🦠\to🧪}$ and the non-growth-associated production coefficent $\beta_{🦠\to🧪}$, where $🦠$ represents the biological species. 
+Most of the gas is produced by bacteria in the process of proliferation (growth-associated part), but some is also produced independently of ongoing proliferation (non-growth-associated part). For each nutrient species $🧪$: 
+
+$$\partial_t\,c_🧪 = \underbrace{ ~\alpha_{🦠\to🧪} \cdot \mu_{🦠}(c_\cdots) \cdot c_{🦠}~ }_{ \text{growth-associated} } + \underbrace{ ~\beta_{🦠\to🧪} \cdot c_{🦠}~ }_{ \text{non-growth-associated} }$$
+
+with the growth-associated production coefficent $\alpha_{🦠\to🧪}$ and the non-growth-associated production coefficent $\beta_{🦠\to🧪}$, where $🦠$ represents the biological species. 
 
 ### Gas Exchange
-For each of these nutrients $🧪$: $$\partial_t c_{🧪} = k_{\text{La},🧪} \cdot \left( \frac{p_{🧪}}{H_{🧪}} - c_{🧪} \right)$$
+For each of these nutrients $🧪$: 
+
+$$\partial_t c_{🧪} = k_{\text{La},🧪} \cdot \left( \frac{p_{🧪}}{H_{🧪}} - c_{🧪} \right)$$
 
 ### Summary of the Dynamics
 The mathematical relationships between the instantaneous concentrations of the species and the reaction rates are as follows:
+
 $$
 \begin{aligned}
 \text{Bacterial Proliferation Rates:} && \frac{\mathrm{d}}{\mathrm{d}t}c_{🦠} &= \mu_{🦠}(c_{\cdots}) \cdot c_{🦠} && \text{(I)}
@@ -71,6 +88,7 @@ $$
 \\\text{Gas Exchange:} && \frac{\mathrm{d}}{\mathrm{d}t} c_{🧪} &= k_{\text{La},🧪} \cdot \left( \frac{p_{🧪}}{H_{🧪}} - c_{🧪} \right) && \text{(IV)}
 \end{aligned}
 $$
+
 Here, 🦠 indicates any bacterial species and 🧪 indicates any nutrient species. 
 
 ~~Some of the parameters named here are, themselves, functions of the state of the system or otherwise well-defined through some mathematical model. In the following, we describe how we model these dependencies in more detail:~~
