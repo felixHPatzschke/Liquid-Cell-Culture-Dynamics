@@ -83,9 +83,9 @@ $$
 \begin{aligned}
 \text{Bacterial Proliferation Rates:} && \frac{\mathrm{d}}{\mathrm{d}t}c_{🦠} &= \mu_{🦠}(c_{\cdots}) \cdot c_{🦠} && \text{(I)}
 \\\text{Multiplicative Monod Model:} && &\quad~ \mu_{🦠}(c_\cdots) = \mu_{\max,🦠} \cdot \prod_{🧪} \frac{c_{🧪}}{c^\text{half}_{🦠,🧪} + c_{🧪}}
-\\\text{Nutrient Consumption Rates:} && \frac{\mathrm{d}}{\mathrm{d}t} c_{🧪} &= \frac{-1}{Y_{🦠\leftarrow🧪}} \cdot \mu_{🦠}(c_\cdots) \cdot c_{🦠} && \text{(II)}
-\\\text{Gas Production:} && \frac{\mathrm{d}}{\mathrm{d}t}c_{🧪} &= \underbrace{ \alpha_{🦠\to🧪} \cdot \mu_{🦠}(c_\cdots) \cdot c_{🦠} }_{ \text{growth-associated} } + \underbrace{ \beta_{🦠\to🧪} \cdot c_{🦠} }_{ \text{non-growth-associated} } && \text{(III)}
-\\\text{Gas Exchange:} && \frac{\mathrm{d}}{\mathrm{d}t} c_{🧪} &= k_{\text{La},🧪} \cdot \left( \frac{p_{🧪}}{H_{🧪}} - c_{🧪} \right) && \text{(IV)}
+\\ \text{Nutrient Consumption Rates:} && \frac{\mathrm{d}}{\mathrm{d}t} c_{🧪} &= \frac{-1}{Y_{🦠\leftarrow🧪}} \cdot \mu_{🦠}(c_\cdots) \cdot c_{🦠} && \text{(II)}
+\\ \text{Gas Production:} && \frac{\mathrm{d}}{\mathrm{d}t}c_{🧪} &= \underbrace{ \alpha_{🦠\to🧪} \cdot \mu_{🦠}(c_\cdots) \cdot c_{🦠} }_{ \text{growth-associated} } + \underbrace{ \beta_{🦠\to🧪} \cdot c_{🦠} }_{ \text{non-growth-associated} } && \text{(III)}
+\\ \text{Gas Exchange:} && \frac{\mathrm{d}}{\mathrm{d}t} c_{🧪} &= k_{\text{La},🧪} \cdot \left( \frac{p_{🧪}}{H_{🧪}} - c_{🧪} \right) && \text{(IV)}
 \end{aligned}
 $$
 
