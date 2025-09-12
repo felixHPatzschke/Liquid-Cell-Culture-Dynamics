@@ -176,3 +176,11 @@ def update_state_with_gas_at_equilibrium(state, ode_system:suspended_cultures_od
         idx = { gas:i for i,gas in enumerate(DEFAULT_ORDER) }[gas]
         res[idx] = ode_system.equilibrium_gas_concentration[gas]
     return res
+
+
+### Tests
+def test():
+    pass
+
+if __name__ == "__main__":
+    test()
