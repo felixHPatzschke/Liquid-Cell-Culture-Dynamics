@@ -1,5 +1,5 @@
 # gas supply partial pressures
-methane_ratio_in_supply: 0.0001 # unitless
+methane_ratio_in_supply: 0.03 # unitless
 gas_supply_pressure_hpa: 1013.25 # units of hPa
 
 total_volume_litres: 1.0 # litres
