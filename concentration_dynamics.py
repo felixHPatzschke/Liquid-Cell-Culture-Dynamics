@@ -1,23 +1,16 @@
 import numpy as np
 import yaml
 
+
 DEFAULT_ORDER = "AHCOMLNP"
 
+
 def make_monod_function(c_half) -> callable:
-    if c_half is None:
+    if c_half is None or c_half == 0:
         return lambda c : 1.0 if c > 0 else 0.0
     else: 
         return lambda c : max( 0, ( c / ( c_half + c ) ) )
 
-def gen_ivp_terminate_event(idx):
-    def event(t,y):
-        return y[idx]
-    
-    event.terminal = True
-    event.direction = -1
-    return event
-
-IVP_SOLUTION_TERMINATION_EVENTS = [ gen_ivp_terminate_event(i) for i,n in enumerate(DEFAULT_ORDER) if n in ["N","P"] ] # termination if N or P run out
 
 class suspended_cultures_ode:
     def __init__(self):
@@ -165,17 +158,34 @@ class suspended_cultures_ode:
         ### return derivative vector
         return [ dA, dH, dC, dO, dM, dL, dN, dP ]
 
+
+### read initial state from file
 def make_initial_state(ymlfile:str):
     with open(ymlfile, 'r') as ymlfile:
         PARAMS = yaml.safe_load(ymlfile)
         return [ PARAMS[key] for key in "AHCOMLNP" ]
 
+
+### edit the initial state so the gas concentrations match the equilibrium gas concentrations before any reactions are considered
 def update_state_with_gas_at_equilibrium(state, ode_system:suspended_cultures_ode):
     res = [ s for s in state ]
     for gas in "COM": # ignore nitrogen
         idx = { gas:i for i,gas in enumerate(DEFAULT_ORDER) }[gas]
         res[idx] = ode_system.equilibrium_gas_concentration[gas]
     return res
+
+
+### Events that terminate the ivp solution if one component (concentration) drops below zero.
+def gen_ivp_terminate_event(idx):
+    def event(t,y):
+        return y[idx]
+    
+    event.terminal = True
+    event.direction = -1
+    return event
+
+### termination if N or P run out
+IVP_SOLUTION_TERMINATION_EVENTS = [ gen_ivp_terminate_event(i) for i,n in enumerate(DEFAULT_ORDER) if n in ["N","P"] ]
 
 
 ### Tests
