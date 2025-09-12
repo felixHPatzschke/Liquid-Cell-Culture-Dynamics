@@ -4,7 +4,24 @@ Here, we model the concentration dynamics of a liquid suspended culture with two
 
 ![Reaction Scheme](reaction_scheme.png "Reaction Scheme")
 
-Currently, a full implementation of this model is available in the Jupyter notebook `suspended_cultures_sim_v2.ipynb`. In order to make the model easier to understand and use, we are in the process of refactoring the current implementation into distinct units. See [Files](#Files) for details.
+At this time, a full implementation of the current version of the model is available in the Jupyter notebook `suspended_cultures_sim_v2.ipynb`. However, in order to make the model easier to understand and use, the implementation is being refactored into distinct units:
+
+## Files
+This repository contains the following (relevant) files:
+
+### Executable Code
+- `Liquid Cell Culture Dynamics.ipynb`: Jupyter notebook implementing a simulation of the model and visualizing the simulation results.
+- `concentration_dynamics.py`: Python module containing the implementation of the decscribed model.
+- ~~`params.py`: Python module containing the logic to load and process parameters from the serial files.~~
+- `suspended_cultures_sim_v2.ipynb`: Jupyter notebook containing the original implementation of the model, to be removed once the refactored implementation is complete.
+
+### Serial Files
+- `constants.yml`: Serial file containing constant parameters used in the simulations.
+- `parameters.yml`: Serial file containing default values for parameters that may be changed in the real experiment.
+
+### Documentation
+- `README.md`: This file, containing the description of the model for the concentration dynamics in mixed-species cultures.
+- `reaction_scheme.png`: Graphical representation of the reaction scheme.
 
 ## System Description
 The model describes the behaviour of the concentrations of the following species (🦠 biological and 🧪 chemical) over time:
@@ -116,13 +133,3 @@ Not every nutrient is limiting for each biological species. (Refer to the reacti
 - $c^\mathrm{half}_{H,N}:$ the concentration of nitrogen (🧪N) at which the growth rate of methanotrophs (🦠H) is half its maximum if not otherwise limited. (units of mol/m³)
 - $c^\mathrm{half}_{H,P}:$ the concentration of phosphorous (🧪P) at which the growth rate of methanotrophs (🦠H) is half its maximum if not otherwise limited. (units of mol/m³)
 
-## Files
-This repository contains the following files:
-- `README.md`: This file, containing the description of the model for the concentration dynamics in mixed-species cultures.
-- `concentration_dynamics.py`: Python module containing the implementation of the decscribed model.
-- `constants.yml`: Serial file containing constant parameters used in the simulations.
-- `parameters.yml`: Serial file containing default values for parameters that may be changed in the real experiment.
-- `params.py`: Python module containing the logic to load and process parameters from the serial files.
-- `Liquid Cell Culture Dynamics.ipynb`: Jupyter notebook implementing a simulation of the model and visualizing the simulation results.
-- `reaction_scheme.png`: Graphical representation of the reaction scheme described above.
-- `suspended_cultures_sim_v2.ipynb`: Jupyter notebook containing the original implementation of the model, to be removed once the refactored implementation is complete.
